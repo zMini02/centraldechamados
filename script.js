@@ -9,6 +9,7 @@ document.getElementById('chamadoForm').addEventListener('submit', function(event
     const descricao = document.getElementById('descricao').value;
     const atualizacoes = document.getElementById('atualizacoes').value;
     const status = document.getElementById('status').value;
+    const dataAbertura = document.getElementById('dataAbertura').value; // Nova linha
 
     let problemaCor;
     if (problemaFisico === 'sim') {
@@ -26,18 +27,18 @@ document.getElementById('chamadoForm').addEventListener('submit', function(event
         softwareCor = '🔴'; // Se não for
     }
 
-    const mensagem = `Chamado Nº ${numeroChamado}\n` +
-        `Data de abertura: ${new Date().toLocaleDateString()}\n` +
-        `Cliente: ${cliente}\n` +
-        `Responsável pelo Atendimento: ${responsavel}\n\n` +
-        `Especificando o setor do chamado\n` +
+    const mensagem = `*Chamado Nº ${numeroChamado}*\n` +
+        `Data de abertura: ${dataAbertura}\n` + // Atualizando a data de abertura
+        `Cliente: *${cliente}*\n` +
+        `Responsável pelo Atendimento: *${responsavel}*\n\n` +
+        `*Especificando o setor do chamado*\n` +
         `O problema é físico? ${problemaCor}\n` +
         `O problema envolve software/firmware? ${softwareCor}\n\n` +
-        `Descrição do problema\n` +
+        `*Descrição do problema*\n` +
         `${descricao}\n\n` +
-        `Atualizações do chamado 🔄\n` +
+        `*Atualizações do chamado* 🔄\n` +
         `${atualizacoes}\n\n` +
-        `STATUS DO CHAMADO: ${status === 'finalizado' ? 'FINALIZADO ✅' : 'EM ABERTO 🔄'}`;
+        `*STATUS DO CHAMADO:* *${status === 'finalizado' ? 'FINALIZADO ✅' : 'EM ABERTO ⛔'}*`;
 
     // Copia a mensagem para a área de transferência
     navigator.clipboard.writeText(mensagem).then(() => {
